@@ -38,7 +38,7 @@ for train_index, test_index in skf.split(x, y):
     
     print ""
 
-#get mean value
+#get mean values
 scores = [1.*score/10 for score in scores]
 
 for score in scores:
