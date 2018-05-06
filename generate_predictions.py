@@ -32,8 +32,9 @@ regressor_y_train = regressor_training_data[21]
 regressor_x_train = regressor_training_data.drop([21], axis=1)
 regressor_x_test = regressor_testing_data.drop([21], axis=1)
 
-regressor = RandomForestRegressor() # chosen as best regressor in validation stage
+regressor = RandomForestRegressor(warm_start=True) # chosen as best regressor in validation stage
 regressor.fit(regressor_x_train, regressor_y_train)
+regressor.fit(regressor_x_train, regressor_y_train) # fit() called twice because of warm_start
 regressor_predictions = regressor.predict(regressor_x_test)
 
 regressor_output_filename = "regression_predictions.out"
