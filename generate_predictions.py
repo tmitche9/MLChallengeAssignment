@@ -12,7 +12,7 @@ classifier_y_train = classifier_training_data[48]
 classifier_x_train = classifier_training_data.drop([48], axis=1)
 classifier_x_test = classifier_testing_data.drop([48], axis=1)
 
-classifier = AdaBoostClassifier() # chosen as best classifier in validation stage
+classifier = AdaBoostClassifier(n_estimators=100, learning_rate=1.2) # chosen as best classifier in validation stage
 classifier.fit(classifier_x_train, classifier_y_train)
 classifier_predictions = classifier.predict(classifier_x_test)
 
@@ -32,9 +32,8 @@ regressor_y_train = regressor_training_data[21]
 regressor_x_train = regressor_training_data.drop([21], axis=1)
 regressor_x_test = regressor_testing_data.drop([21], axis=1)
 
-regressor = RandomForestRegressor(warm_start=True) # chosen as best regressor in validation stage
+regressor = RandomForestRegressor(n_estimators=175) # chosen as best regressor in validation stage
 regressor.fit(regressor_x_train, regressor_y_train)
-regressor.fit(regressor_x_train, regressor_y_train) # fit() called twice because of warm_start
 regressor_predictions = regressor.predict(regressor_x_test)
 
 regressor_output_filename = "regression_predictions.out"

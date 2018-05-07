@@ -12,8 +12,8 @@ y = data[48]
 x = data.drop([48], axis=1)
 
 classifiers = list()
-classifiers.append(AdaBoostClassifier(n_estimators=100, learning_rate=1.2))
-classifiers.append(AdaBoostClassifier(n_estimators=100, learning_rate=1.2))
+classifiers.append(AdaBoostClassifier(learning_rate=1.2))
+classifiers.append(AdaBoostClassifier(n_estimators=100))
 classifiers.append(AdaBoostClassifier(n_estimators=100, learning_rate=1.2))
 
 skf = StratifiedKFold(n_splits=10)
@@ -43,4 +43,3 @@ scores = [1.*score/10 for score in scores]
 
 for score in scores:
     print "Overall Accuracy: {}".format(score)
-

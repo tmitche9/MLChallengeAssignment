@@ -12,8 +12,8 @@ y = data[21]
 x = data.drop([21], axis=1)
 
 regressors = list()
-regressors.append(RandomForestRegressor(n_estimators=175, warm_start=True))
-regressors.append(RandomForestRegressor(n_estimators=175, warm_start=True))
+regressors.append(RandomForestRegressor(n_estimators=175))
+regressors.append(RandomForestRegressor(warm_start=True))
 regressors.append(RandomForestRegressor(n_estimators=175, warm_start=True))
 
 skf = StratifiedKFold(n_splits=10)
@@ -42,4 +42,4 @@ for train_index, test_index in skf.split(x, y):
 scores = [1.*score/10 for score in scores]
 
 for score in scores:
-	print "Overall MSE", score
+	print "Overall MSE: {}".format(score)
